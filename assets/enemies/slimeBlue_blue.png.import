@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platformChar_idle.png-caae410f1894485e378c6e7d58f660ee.stex"
+path="res://.import/slimeBlue_blue.png-e332a6574418ba65532d635212549eaf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/platformChar_idle.png"
-dest_files=[ "res://.import/platformChar_idle.png-caae410f1894485e378c6e7d58f660ee.stex" ]
+source_file="res://assets/enemies/slimeBlue_blue.png"
+dest_files=[ "res://.import/slimeBlue_blue.png-e332a6574418ba65532d635212549eaf.stex" ]
 
 [params]
 

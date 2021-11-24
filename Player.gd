@@ -10,8 +10,11 @@ const JUMP_FORCE = 900
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for child in get_owner().get_node("Coins").get_children():		
+		child.connect("coin_collected", self, "add_coin")
+		
 
+var coins_collected = 0
 var velocity = Vector2(0,0)
 
 func _physics_process(delta):
@@ -41,16 +44,13 @@ func _physics_process(delta):
 	velocity.x = lerp(velocity.x,0,0.2)
 	
 
-#func _process(delta):
-#	pass
-
-
 func _on_Fallzone_body_entered(body):
 	get_tree().change_scene("res://level1.tscn")
 
 
-var coins_collected = 0
+
 func add_coin():
 	coins_collected += 1
+	$HUD.update_coins(coins_collected)
 	if coins_collected == 2:
 		get_tree().change_scene("res://level1.tscn")

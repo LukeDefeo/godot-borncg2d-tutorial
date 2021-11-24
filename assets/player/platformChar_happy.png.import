@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platformChar_climb1.png-a0e0767cd30718907e21c35c27a0b47f.stex"
+path="res://.import/platformChar_happy.png-ae2401f01af3b3450f67aa83f950b6a4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/platformChar_climb1.png"
-dest_files=[ "res://.import/platformChar_climb1.png-a0e0767cd30718907e21c35c27a0b47f.stex" ]
+source_file="res://assets/player/platformChar_happy.png"
+dest_files=[ "res://.import/platformChar_happy.png-ae2401f01af3b3450f67aa83f950b6a4.stex" ]
 
 [params]
 

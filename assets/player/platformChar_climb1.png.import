@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platformChar_duck.png-095c1fe2b7cf76d858147a2082475a50.stex"
+path="res://.import/platformChar_climb1.png-abdaf61287cc8d3caf7ca1d2b9d15af0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/platformChar_duck.png"
-dest_files=[ "res://.import/platformChar_duck.png-095c1fe2b7cf76d858147a2082475a50.stex" ]
+source_file="res://assets/player/platformChar_climb1.png"
+dest_files=[ "res://.import/platformChar_climb1.png-abdaf61287cc8d3caf7ca1d2b9d15af0.stex" ]
 
 [params]
 
