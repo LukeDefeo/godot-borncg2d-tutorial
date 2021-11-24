@@ -16,13 +16,13 @@ func _ready():
 
 var coins_collected = 0
 var velocity = Vector2(0,0)
-
+var alive = true
 func _physics_process(delta):
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left") and alive:
 		$AnimatedSprite.play("walk")
 		$AnimatedSprite.flip_h = true
 		velocity.x = -SPEED
-	elif Input.is_action_pressed("right"):
+	elif Input.is_action_pressed("right") and alive:
 		$AnimatedSprite.play("walk")
 		$AnimatedSprite.flip_h = false
 		velocity.x = SPEED
@@ -53,4 +53,28 @@ func add_coin():
 	coins_collected += 1
 	$HUD.update_coins(coins_collected)
 	if coins_collected == 2:
-		get_tree().change_scene("res://level1.tscn")
+		$LevelCompleteTimer.start()
+		
+
+
+func _on_LevelCompleteTimer_timeout():
+	get_tree().change_scene("res://level1.tscn")
+
+#called from enemy
+func kill(enemy_pos):
+	alive = false
+	if position.x < enemy_pos:
+		#to left of enemy
+		velocity.x = -JUMP_FORCE * 0.4
+	else:
+		velocity.x = JUMP_FORCE * 0.4
+	
+	velocity.y = - JUMP_FORCE * 0.4
+	
+	$AnimatedSprite.set_modulate(Color(1,0.3,0.3,0.3))
+	$DeathTimer.start()
+	
+
+
+func _on_DeathTimer_timeout():
+	get_tree().change_scene("res://level1.tscn")

@@ -4,6 +4,7 @@ enum Direction {LEFT = -1, RIGHT = 1}
 
 export var direction = Direction.LEFT
 export var detect_cliffs = true
+var killer = false
 var velocity = Vector2(0,0)
 var terminal_velocity =  500
 
@@ -24,8 +25,12 @@ func _physics_process(delta):
 		
 	
 	velocity.y = min(terminal_velocity, velocity.y + 20)
-	velocity.x = 50 * direction	
+	if killer:
+		velocity.x = 0
+	else:
+		velocity.x = 50 * direction	
 	move_and_slide(velocity, Vector2.UP)
-	
-	
-	
+		
+func _on_KillBox_body_entered(body):
+	killer = true
+	body.kill(position.x)

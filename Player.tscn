@@ -24,3 +24,13 @@ position = Vector2( 0, 15 )
 shape = SubResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="LevelCompleteTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[connection signal="timeout" from="LevelCompleteTimer" to="." method="_on_LevelCompleteTimer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
