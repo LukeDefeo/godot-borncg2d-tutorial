@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemies/slimeBlue.png" type="Texture" id=2]
 [ext_resource path="res://assets/enemies/slimeBlue_blue.png" type="Texture" id=3]
+[ext_resource path="res://assets/enemies/slimeBlue_squashed.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
@@ -13,10 +19,13 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 15, 24.995 )
+extents = Vector2( 12.0004, 24.995 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 28, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 28, 4 )
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 16
@@ -29,7 +38,7 @@ frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 9.31323e-10, 2 )
+position = Vector2( 0.00226077, 4.99962 )
 rotation = -1.57155
 shape = SubResource( 2 )
 
@@ -46,5 +55,17 @@ collision_layer = 0
 position = Vector2( 0, 7 )
 shape = SubResource( 3 )
 
+[node name="TopBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBox"]
+position = Vector2( 0, -7 )
+shape = SubResource( 4 )
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.3
+
 [connection signal="area_entered" from="KillBox" to="." method="_on_KillBox_area_entered"]
 [connection signal="body_entered" from="KillBox" to="." method="_on_KillBox_body_entered"]
+[connection signal="body_entered" from="TopBox" to="." method="_on_TopBox_body_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

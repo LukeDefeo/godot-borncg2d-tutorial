@@ -47,6 +47,7 @@ jump={
 2d_physics/layer_4="item"
 2d_physics/layer_5="enemy"
 2d_physics/layer_6="firebal"
+2d_physics/layer_7="enemy_killbox"
 
 [physics]
 

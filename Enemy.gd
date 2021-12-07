@@ -34,3 +34,16 @@ func _physics_process(delta):
 func _on_KillBox_body_entered(body):
 	killer = true
 	body.kill(position.x)
+
+
+func _on_TopBox_body_entered(body):
+	print("here")
+	$AnimatedSprite.play("dead")
+	body.bounce()
+	$DeathTimer.start()
+	
+
+
+func _on_DeathTimer_timeout():
+	queue_free()
+	

@@ -60,6 +60,12 @@ func add_coin():
 func _on_LevelCompleteTimer_timeout():
 	get_tree().change_scene("res://level1.tscn")
 
+
+#called from enemy
+func bounce():
+	velocity.y = - JUMP_FORCE * 0.7
+	
+
 #called from enemy
 func kill(enemy_pos):
 	alive = false
